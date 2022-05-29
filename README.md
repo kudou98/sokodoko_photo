@@ -21,9 +21,15 @@
 - 地元の秘境を広めたい時
 
 ## 設計書
-<...>
+#ER図
 
-## 実務機能リスト
+#テーブル定義書
+https://docs.google.com/spreadsheets/d/1zLF5LBC2f8o-mCCdHohkvLFpZNfd6m8o0f8kosPYTyg/edit?usp=sharing
+
+#アプリケーション詳細設計書
+https://docs.google.com/spreadsheets/d/11uqaRbWkCA0rl6N1m69mdaa1u9n8R4Iv-m9vGqd4NIc/edit?usp=sharing
+
+# 実務機能リスト
 https://docs.google.com/spreadsheets/d/1JPM7vbxS2734lbpaaZjkjmtR7IRRlyi5T_oos7xNpgo/edit?usp=sharing
 
 ## 開発環境
