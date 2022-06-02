@@ -1,2 +1,9 @@
-<h1>User::Posts#index</h1>
-<p>Find me in app/views/user/posts/index.html.erb</p>
+<% @post.each do |post| %>
+<div>
+  <%= image_tag post.get_image %>
+  <p>投稿写真：<%= image_tag 'sample-author1.jpg' %></p>
+  <p>撮影場所名：<%= post.location %></p>
+  <p>説明文：<%= post.body %></p>
+  <p>ユーザーネーム：<%= post.user.name %></p>
+</div>
+<% end %>

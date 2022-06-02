@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   scope module: :user do
     root 'homes#top'
 
-    resources :posts, only: [:new, :show, :index, :edit, :destroy]
+    resources :posts, only: [:new, :create, :show, :index, :edit, :destroy]
 
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
