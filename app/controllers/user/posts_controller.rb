@@ -1,4 +1,6 @@
 class User::PostsController < ApplicationController
+  before_action :authenticate_user! , only:[:new, :create, :edit, :update]
+
   def new
     @post = Post.new
   end
@@ -6,11 +8,7 @@ class User::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    if @post.save
-      redirect_to post_path(@post.id)
-    else
-      render :new
-    end
+    @post.save ? (redirect_to user_post_path(@post)) : (render :new)
   end
 
   def index
