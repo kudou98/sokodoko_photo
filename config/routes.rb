@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
 
-
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
   }
@@ -12,10 +11,12 @@ Rails.application.routes.draw do
     sessions: 'user/sessions'
   }
 
+
   scope module: :user do
     root 'homes#top'
 
     resources :posts, only: [:new, :create, :show, :index, :edit, :destroy]
+    resources :users, only: [:show, :edit]
 
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

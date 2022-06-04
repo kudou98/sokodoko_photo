@@ -2,11 +2,13 @@ class Post < ApplicationRecord
 
   belongs_to :user
 
-  has_one_attached :post_image
+  has_one_attached :image
 
   validates :body, presence: true
-  validates :post_image, presence: true
+  validates :post_image_id, presence: true
   validates :location, presence: true
+
+
 
 
   def get_image
