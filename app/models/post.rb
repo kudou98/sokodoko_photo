@@ -2,12 +2,13 @@ class Post < ApplicationRecord
 
   belongs_to :user
 
-  has_one_attached :image
+  has_many :post_comments, dependent: :destroy
 
   validates :body, presence: true
   validates :post_image_id, presence: true
   validates :location, presence: true
 
+  has_one_attached :image
 
 
 
