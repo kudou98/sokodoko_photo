@@ -13,5 +13,6 @@
   <p>撮影場所名：<%= post.location %></p>
   <p>説明文：<%= post.body %></p>
   <p>ユーザーネーム：<%= post.user.name %></p>
+  <p><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></p>
 </div>
 <% end %>
