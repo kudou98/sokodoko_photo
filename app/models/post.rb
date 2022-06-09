@@ -8,18 +8,18 @@ class Post < ApplicationRecord
   validates :post_image, presence: true
   validates :location, presence: true
   validates :body, presence: true
-  
+
   def favorited_by?(user)
   favorites.where(user_id: user.id).exists?
   end
 
 
   def get_image
-   unless image.attached?
+   unless post_image.attached?
     file_path = Rails.root.join('app/assets/images/no_image.jpg')
-    image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    post_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
    end
-   image
+   post_image
   end
 
 end
