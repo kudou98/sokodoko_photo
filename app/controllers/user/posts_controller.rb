@@ -17,6 +17,7 @@ class User::PostsController < ApplicationController
 
   def index
     @posts = Post.page(params[:page])
+    
   end
 
   def show
@@ -35,13 +36,13 @@ class User::PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path
   end
-
-
+  
+  
   private
 
   def post_params
     params.require(:post).permit(:location,:post_image,:body)
-
   end
-
+  
+  
 end
