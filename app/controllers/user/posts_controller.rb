@@ -17,12 +17,15 @@ class User::PostsController < ApplicationController
 
   def index
     @posts = Post.page(params[:page])
-    
+    @tags = Tag.all
+
   end
 
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
+
+    @post_comments = @post.post_comments.order(created_at: :desc)
   end
 
   def edit
@@ -34,15 +37,15 @@ class User::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path
+    redirect_to post_path
   end
-  
-  
+
+
   private
 
   def post_params
     params.require(:post).permit(:location,:post_image,:body)
   end
-  
-  
+
+
 end
