@@ -44,6 +44,9 @@
         <li class="nav-item">
          <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %>
         </li>
+        <li class="nav-item">
+         <%= link_to "ゲストログイン(閲覧用)", guests_guest_sign_in_path, method: :post, class: 'nav-link text-dark' %>
+        </li>
         <% end %>
         </ul>
        </div>
@@ -55,11 +58,12 @@
     <%= yield %>
     </main>
 
+
     <footer class="bg-white text-orange pt-5 pb-4">
      <div class="container">
       <div class="row no-gutters">
        <div class="col-md-4">
-        <p>善良な市民同士で無差別に食欲を煽るSNS</p>
+        <p>秘境を見つける写真投稿サイト</p>
         <%= image_tag('logo.png') %>
        </div>
        <div class="col-md-8">

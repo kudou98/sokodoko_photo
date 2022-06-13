@@ -1,14 +1,13 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!, except: [:top]
+  #before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_search
-  
+
 
   def after_sign_in_path_for(resource)
     posts_path
   end
-  
-  
+
   def set_search
     @query = { title_or_content_cont: params[:q] }
     @search = Post.ransack(@query)
