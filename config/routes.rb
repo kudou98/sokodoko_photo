@@ -5,12 +5,16 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
   }
 
+  namespace :admin do
+    get 'top' => 'homes#top', as: 'top'
+    resources :users, only: [:index, :show, :edit, :update]
+  end
+
 
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "user/registrations",
     sessions: 'user/sessions'
   }
-
 
 
   scope module: :user do
