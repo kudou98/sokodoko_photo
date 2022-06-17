@@ -22,33 +22,30 @@
         <ul class="navbar-nav ml-auto">
 
 
+         <% if admin_signed_in? %>
+          <li class="nav-item"><%= link_to '会員一覧',  admin_users_path, class: 'nav-link text-dark' %></li>
+          <li class="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %></li>
+         <% elsif user_signed_in? %>
           <%= form_with url: posts_path, method: :get, local: true do |f| %>
           <%= f.text_field :q, placeholder: "気になるワードを入力", value: "" %>
           <%= f.submit "検索", name: nil %>
           <% end %>
-
-        <% if user_signed_in? %>
-        <li class="nav-item">
-         <%= link_to "写真投稿", new_post_path, class: 'nav-link text-dark' %>
-        </li>
-        <li class="nav-item">
-         <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark' %>
-        </li>
-        <li class="nav-item">
-         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
-        </li>
-        <% else %>
-        <li class="nav-item">
-         <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
-        </li>
-        <li class="nav-item">
-         <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %>
-        </li>
-        <li class="nav-item">
-         <%= link_to "ゲストログイン(閲覧用)", guests_guest_sign_in_path, method: :post, class: 'nav-link text-dark' %>
-        </li>
+          <li class="nav-item"><%= link_to "写真投稿", new_post_path, class: 'nav-link text-dark' %></li>
+          <li class="nav-item"><%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark' %></li>
+          <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %></li>
+         <% else %>
+          <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %></li>
+          <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %></li>
+          <li class="nav-item"><%= link_to "ゲストログイン(閲覧用)", guests_guest_sign_in_path, method: :post, class: 'nav-link text-dark' %></li>
         <% end %>
         </ul>
+        <% if admin_signed_in? %>
+         <%= form_tag(admin_search_path, method: :get) do %>
+          <%= text_field_tag "search[content]", "", :placeholder =>"ユーザー名" %>
+          <%= select_tag "search[method]", options_for_select({ "部分一致" => "partial", "完全一致" => "perfect" }) %>
+          <%= submit_tag '検索', class: "btn btn-primary" %>
+         <% end %>
+        <% end %>
        </div>
       </div>
      </nav>
@@ -69,9 +66,6 @@
        <div class="col-md-8">
         <h6 class="text-orange mt-2 mb-3">Link</h6>
         <ul class="p-0 list-unstyled">
-         <li>
-          <a href="" title="About" class="text-orange">会社概要</a>
-         </li>
          <li>
           <a href="" title="License informations" class="text-orange">プライバシーポリシー</a>
          </li>

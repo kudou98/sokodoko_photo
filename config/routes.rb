@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'top' => 'homes#top', as: 'top'
+    get 'search' => 'homes#search', as: 'search'
     resources :users, only: [:index, :show, :edit, :update]
   end
 
