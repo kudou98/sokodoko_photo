@@ -1,11 +1,14 @@
-<h1>投稿詳細</h1>
-<div>
-  <%= image_tag @post.post_image %>
+<div class="main">
+ <h1>投稿詳細</h1>
+  <div>
+  <%= image_tag @post.post_image, size: '320x240' %>
   <p>撮影場所：<%= @post.location %></p>
   <p>説明文：<%= @post.body %></p>
   <p>プロフィール画像：<%= image_tag @post.user.get_profile_image(100,100) %></p>
   <p>ユーザーネーム：<%= @post.user.name %></p>
   <p>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+
+
 
   <% if @post.user == current_user %>
     <%= link_to "削除", post_path(@post), method: :delete %>
@@ -43,4 +46,5 @@
     <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
     <%= f.submit "送信する" %>
   <% end %>
+</div>
 </div>

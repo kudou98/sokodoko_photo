@@ -9,6 +9,7 @@ class User::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
+      flash[:success] = '投稿しました!' 
       redirect_to posts_path
     else
       render :new
@@ -25,6 +26,7 @@ class User::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
 
+    @post_tags = @post.tags
     @post_comments = @post.post_comments.order(created_at: :desc)
   end
 
@@ -39,12 +41,18 @@ class User::PostsController < ApplicationController
     @post.destroy
     redirect_to post_path
   end
+  
+  
+  def search_post
+     @post = Post.new
+     @posts = Post.search(params[:keyword])
+  end
 
 
   private
 
   def post_params
-    params.require(:post).permit(:location,:post_image,:body)
+    params.require(:post).permit(:location,:post_image,:body,:tag)
   end
 
 

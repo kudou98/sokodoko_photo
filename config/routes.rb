@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   scope module: :user do
     root 'homes#top'
     post '/guests/guest_sign_in', to: 'guests#new_guest'
+    get "search_post" => "posts#search_post"
 
 
     resources :posts, only: [:new, :create, :show, :index, :edit, :destroy] do

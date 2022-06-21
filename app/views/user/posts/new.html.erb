@@ -23,6 +23,8 @@
      </div>
      <%= f.text_area :body, class:"form-control", rows:"3", placeholder:"コメントここに" %>
      
+     <%= f.text_field :tag, class: "form-control", placeholder: "ひとつだけタグをつけられます" %>
+     
      <hr>
      <%= f.submit '投稿', class:"btn btn-lg btn-block btn-info mt-4" %>
     <% end %>

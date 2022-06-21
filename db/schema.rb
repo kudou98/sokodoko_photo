@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_11_025312) do
+ActiveRecord::Schema.define(version: 2022_06_20_133056) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -68,10 +68,11 @@ ActiveRecord::Schema.define(version: 2022_06_11_025312) do
   end
 
   create_table "post_tags", force: :cascade do |t|
-    t.integer "posts_id"
-    t.integer "tags_id"
+    t.integer "post_id"
+    t.integer "tag_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id", "tag_id"], name: "index_post_tags_on_post_id_and_tag_id", unique: true
   end
 
   create_table "posts", force: :cascade do |t|
@@ -81,10 +82,11 @@ ActiveRecord::Schema.define(version: 2022_06_11_025312) do
     t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "tag"
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "tags_name"
+    t.string "tag_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
