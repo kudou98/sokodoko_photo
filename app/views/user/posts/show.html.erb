@@ -8,21 +8,23 @@
   <p>ユーザーネーム：<%= @post.user.name %></p>
   <p>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
 
+  <p><%= link_to tag.tag_name, search_post_path(keyword: tag.tag_name) %></p>
+
 
 
   <% if @post.user == current_user %>
     <%= link_to "削除", post_path(@post), method: :delete %>
   <% end %>
 
-  <% if @post.favorited_by?(current_user) %>
+  <% if @post.favorited?(current_user) %>
     <p>
-      <%= link_to favorites_path(@post), method: :delete do %>
+      <%= link_to post_favorite_path(@post.id), method: :delete do %>
         ♥<%= @post.favorites.count %> いいね
       <% end %>
     </p>
     <% else %>
     <p>
-      <%= link_to favorites_path(@post), method: :post do %>
+      <%= link_to post_favorites_path(@post.id), method: :post do %>
         ♡<%= @post.favorites.count %> いいね
       <% end %>
     </p>

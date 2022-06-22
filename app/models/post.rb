@@ -4,15 +4,15 @@ class Post < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :post_tags, dependent: :destroy
-   has_many :tags, through: :post_tags, dependent: :destroy
+  has_many :tags, through: :post_tags
   has_one_attached :post_image
 
   validates :post_image, presence: true
   validates :location, presence: true
   validates :body, presence: true
 
-  def favorited_by?(user)
-  favorites.where(user_id: user.id).exists?
+  def favorited?(user)
+    favorites.where(user_id: user.id).exists?
   end
 
   def get_image
@@ -22,10 +22,14 @@ class Post < ApplicationRecord
    end
    post_image
   end
-  
-  
-  def self.search(search_word)
-    Post.where(['tag LIKE ?', "#{search_word}"])
+
+
+  def self.search(search)
+    if search != nil
+      Post.where('location LIKE(?) or body LIKE(?)' , "%#{search}%",  "%#{search}%")
+    else
+      Post.all
+    end
   end
 
 

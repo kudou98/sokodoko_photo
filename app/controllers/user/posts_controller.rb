@@ -3,13 +3,14 @@ class User::PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @posts = Post.all
   end
 
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      flash[:success] = '投稿しました!' 
+      flash[:success] = '投稿しました!'
       redirect_to posts_path
     else
       render :new
@@ -41,11 +42,16 @@ class User::PostsController < ApplicationController
     @post.destroy
     redirect_to post_path
   end
-  
-  
+
+
   def search_post
-     @post = Post.new
-     @posts = Post.search(params[:keyword])
+    @post =Post.new
+    @posts = Post.search(params[:keyword])
+    if (params[:keyword])[0] == '#'
+      @posts = Tag.search(params[:keyword]).order('created_at DESC')
+    else
+      @posts = Post.search(params[:keyword]).order('created_at DESC')
+    end
   end
 
 
