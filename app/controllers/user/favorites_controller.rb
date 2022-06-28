@@ -10,4 +10,5 @@ class User::FavoritesController < ApplicationController
     @post_favorite.destroy
     redirect_to post_path(params[:post_id])
   end
+  
 end
