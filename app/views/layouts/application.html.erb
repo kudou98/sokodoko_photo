@@ -23,8 +23,8 @@
 
 
          <% if admin_signed_in? %>
-          <li class="nav-item"><%= link_to '会員一覧',  admin_users_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %></li>
+          <li class="nav-item"><%= link_to '会員一覧',  admin_users_path, class: 'nav-link text-dark' %></li>
          <% elsif user_signed_in? %>
           <%= form_with url: posts_path, method: :get, local: true do |f| %>
           <%= f.text_field :q, placeholder: "気になるワードを入力", value: "" %>
@@ -56,23 +56,8 @@
     </main>
 
 
-    <footer class="bg-white text-orange pt-5 pb-4">
-     <div class="container">
-      <div class="row no-gutters">
-       <div class="col-md-4">
-        <p>秘境を見つける写真投稿サイト</p>
-        <%= image_tag('logo.png') %>
-       </div>
-       <div class="col-md-8">
-        <h6 class="text-orange mt-2 mb-3">Link</h6>
-        <ul class="p-0 list-unstyled">
-         <li>
-          <a href="" title="License informations" class="text-orange">プライバシーポリシー</a>
-         </li>
-        </ul>
-       </div>
-      </div>
-     </div>
+    <footer>
+     <p class="footer-text">© 2022 SoKoDoKoPHoTo</p>
     </footer>
 
   </body>

@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorited_posts, through: :favorites, source: :post
   has_many :post_comments, dependent: :destroy
 
   validates :name, presence: true, length: {in:1..50}
@@ -20,6 +21,10 @@ class User < ApplicationRecord
       profile_image.attach(io: File.open(file_path), filename: 'default_image.png', content_type: 'image/png')
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
+  end
+  
+  def favorited_by?(post_id)
+    favorites.where(post_id: post_id).exists?
   end
 
 

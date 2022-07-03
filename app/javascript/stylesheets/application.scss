@@ -46,3 +46,32 @@
   padding: 0;
 }
 
+footer {
+  width: 100%;
+  height: 120px;
+  text-align: center;
+  line-height: 120px;
+  background-color: #848282;
+}
+
+.footer-text {
+  color: #fff;
+}
+
+.text {
+  font-size: 20px;
+}
+
+.favorite-link {
+  text-decoration: none;
+}
+
+.favorite-btn {
+  font-size: 1em;
+  color: #808080;
+}
+
+.unfavorite-btn {
+  font-size: 1em;
+  color: #e54747;
+}

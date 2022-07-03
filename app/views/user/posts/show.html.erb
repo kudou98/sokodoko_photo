@@ -16,19 +16,10 @@
     <%= link_to "投稿削除", post_path(@post), method: :delete %>
   <% end %>
 
-  <% if @post.favorited?(current_user) %>
-    <p>
-      <%= link_to post_favorite_path(@post.id), method: :delete do %>
-        ♥<%= @post.favorites.count %> いいね
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to post_favorites_path(@post.id), method: :post do %>
-        ♡<%= @post.favorites.count %> いいね
-      <% end %>
-    </p>
-  <% end %>
+  <div id = "favorite_<%= @post.id %>">
+    <%= render partial: "user/favorites/favorite", locals: { post: @post } %>
+  </div>
+  
 </div>
 
 

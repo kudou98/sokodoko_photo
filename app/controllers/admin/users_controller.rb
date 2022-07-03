@@ -15,7 +15,8 @@ class Admin::UsersController < ApplicationController
   def update
     @user.update(user_params) ? (redirect_to admin_user_path(@user)) : (render :edit)
   end
-
+  
+  
   private
 
   def user_params
