@@ -12,7 +12,11 @@
 
 
 
-  <% if @post.user == current_user %>
+  <% if admin_signed_in? && @post.user == current_admin %>
+    <%= link_to "投稿削除", post_path(@post), method: :delete %>
+  <% end %>
+  
+  <% if user_signed_in? && @post.user == current_user %>
     <%= link_to "投稿削除", post_path(@post), method: :delete %>
   <% end %>
 
