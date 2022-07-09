@@ -1,7 +1,7 @@
 <div class = "text">
-<p>ようこそ、<%= current_user.name %>さん!</p>
-<p>写真にいいね&コメントをしよう！！</p>
-<p>ここではユーザの投稿を閲覧できます。</p>
+  <p>ようこそ、<%= current_user.name %>さん!</p>
+  <p>写真にいいね&コメントをしよう！！</p>
+  <p>ここではユーザの投稿を閲覧できます。</p>
 </div>
 
 <%= render 'user/posts/list', posts: @posts %>

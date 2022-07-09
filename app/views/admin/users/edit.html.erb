@@ -1,29 +1,29 @@
 <section class="inner">
-	<h2 class="section-ttl"><%= @user.name %> さんの会員情報編集</h2>
-	<%= form_with model:@user, url: admin_user_path(@user) do |f| %>
-	 <table class="customer_info customer_form">
+  <h2 class="section-ttl"><%= @user.name %> さんの会員情報編集</h2>
+    <%= form_with model:@user, url: admin_user_path(@user) do |f| %>
+	  <table class="customer_info customer_form">
 	  
-	  <tbody>
-	   <tr>
-	    <td>ユーザー名</td>
-		<td><%= f.label :name, "ユーザー名", class: "user_name" %> <%= f.text_field :name, :placeholder =>"#{@user.name}" %></td>
-	   </tr>
+	    <tbody>
+	      <tr>
+	      	<td>ユーザー名</td>
+	      	<td><%= f.label :name, "ユーザー名", class: "user_name" %> <%= f.text_field :name, :placeholder =>"#{@user.name}" %></td>
+	      </tr>
 	   
-	   <tr>
-	    <td>メールアドレス</td>
-		<td colspan="2"><%= f.email_field :email, autocomplete: "email", :placeholder =>"#{@user.email}" %></td>
-	   </tr>
+	      <tr>
+	        <td>メールアドレス</td>
+	        <td colspan="2"><%= f.email_field :email, autocomplete: "email", :placeholder =>"#{@user.email}" %></td>
+	      </tr>
 	   
-	   <tr>
-	    <td>会員ステータス</td>
-		<td><%= f.radio_button :is_active, true %><%= f.label :is_active, "有効", class: "text-active" %></td>
-		<td><%= f.radio_button :is_active, false %><%= f.label :is_active, "退会済み", class: "text-invalid" %></td>
-	   </tr>
+	      <tr>
+	        <td>会員ステータス</td>
+	        <td><%= f.radio_button :is_active, true %><%= f.label :is_active, "有効", class: "text-active" %></td>
+	        <td><%= f.radio_button :is_active, false %><%= f.label :is_active, "退会済み", class: "text-invalid" %></td>
+	      </tr>
 	   
-	   <tr>
-	    <td colspan="3"><%= f.submit "更新", class: "btn btn-primary" %></td>
-	   </tr>
-	  </tbody>
-	 </table>
+	      <tr>
+	        <td colspan="3"><%= f.submit "更新", class: "btn btn-primary" %></td>
+	      </tr>
+	    </tbody>
+	  </table>
 	<% end %>
 </section>
