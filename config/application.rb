@@ -11,7 +11,7 @@ module SokodokoPhoto
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
     config.hosts << "c8cc643b4fa04354b1b23245d9b947ee.vfs.cloud9.ap-northeast-1.amazonaws.com"
-    config.hosts << "54.95.169.250"
+    config.hosts << "18.177.95.175"
 
     # Configuration for the application, engines, and railties goes here.
     #
